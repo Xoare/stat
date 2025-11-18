@@ -9,9 +9,16 @@ class App:
         self.Appbar()
 
     def Appbar(self):
-        self.page.appbar = ft.AppBar(leading= ft.IconButton(ft.Icons.MENU, on_click= lambda _ : self.Navigationdrawer()),title = ft.Text("Калькулятор Статистики"), leading_width=40, bgcolor = ft.Colors.PURPLE_200)
+        self.page.appbar = ft.AppBar(
+            leading= ft.IconButton(
+                ft.Icons.MENU, on_click= lambda _ : self.Navigationdrawer(),
+                icon_color= ft.Colors.WHITE),
+            title = ft.Text("Калькулятор Статистики", color = ft.Colors.WHITE),
+            actions=[ft.IconButton(icon = ft.Icons.LOGOUT, icon_color = ft.Colors.WHITE, on_click = lambda _: self.page.window.close())],
+            leading_width=40, bgcolor ="#36618e", elevation=8)
         self.page.update()
 
+    
     def Navigationdrawer(self):
         self.page.drawer = NavDraw().create_drawer(self.page)
         self.page.drawer.open = True
