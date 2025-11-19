@@ -6,6 +6,7 @@ class App:
         self.drawer = NavDraw().create_drawer(page)
         self.page = page
         page.title = "Калькулятор Статистики"
+        page.scroll = ft.ScrollMode.AUTO
         self.Appbar()
 
     def Appbar(self):

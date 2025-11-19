@@ -12,6 +12,24 @@ def MedianValue(e: ft.ControlEvent):
     page.clean()
     
     Average_list = ft.TextField(label='2,2,3,4,5')
+    result_text = ft.Text(size=16)
+    formula_median = ft.Text("Формулы:\nMe = x₍ₙ₊₁₎/₂\nMe = (xₙ/₂ + xₙ/₂ ₊ ₁) / 2", weight=ft.FontWeight.BOLD, size=20, visible=False)
+    soreted_number = ft.Text(visible=False, size=16)
+    selection = ft.Text(visible=False, size=16)
+    parity = ft.Text(visible=False, size=16)
+    result_end = ft.Text(visible=False, weight=ft.FontWeight.BOLD, size=20)
+    button_destroy = ft.FilledTonalButton(text="Очистить", visible=False)
+
+    def Destroy(e):
+        formula_median.visible = False
+        soreted_number.visible = False
+        parity.visible = False
+        selection.visible = False
+        result_end.visible = False
+        button_destroy.visible = False
+        Average_list.value = ""
+        result_text.value = ""
+        page.update()
 
     def Average(e):
         try:
@@ -23,29 +41,62 @@ def MedianValue(e: ft.ControlEvent):
                 item = item.strip()
                 if not is_float_or_is_int(item):
                     result_text.value = "Ошибка: все значения должны быть числами"
+                    formula_median.visible = False
+                    soreted_number.visible = False
+                    parity.visible = False
+                    selection.visible = False
+                    result_end.visible = False
+                    button_destroy.visible = False
                     page.update()
                     return
                 numbers.append(float(item))
 
-            average = sum(numbers) / len(numbers)
-            result_text.value = f"Среднее значение: {average:.2f}"
+            result_text.value = f"X = {{{', '.join(map(str, numbers))}}}"
+            soreted_number.value = f"X = {{{', '.join(map(str, sorted(numbers)))}}}"
+            selection.value = f"n = {len(numbers)}"
+            parity.value = f"n: {'Четное' if len(numbers) % 2 == 0 else 'Нечетное'}"
+            numbers.sort()
+
+            if len(numbers) % 2 == 0:
+                median = (numbers[len(numbers)//2 - 1] + numbers[len(numbers)//2]) / 2
+            else:
+                median = numbers[len(numbers)//2]
+            result_end.value = f"Me = {median}"
+
+            formula_median.visible = True
+            soreted_number.visible = True
+            parity.visible = True
+            button_destroy.visible = True
+            selection.visible = True
+            result_end.visible = True
             page.update()
             
         except Exception as ex:
             result_text.value = f"Ошибка: {ex}"
+            formula_median.visible = False
+            soreted_number.visible = False
+            parity.visible = False
+            selection.visible = False
+            result_end.visible = False
+            button_destroy.visible = False
             page.update()
     
-    Average_list_button = ft.FilledTonalButton(
-        text="Расчитать", 
-        on_click=Average
-    )
+    button_destroy.on_click = Destroy
     
-    result_text = ft.Text()
+    Average_list_button = ft.Row([
+        ft.FilledTonalButton(text="Рассчитать", on_click=Average),
+        button_destroy
+    ])
     
     page.add(
         ft.Text("Введите числа через запятую:", size=16),
         Average_list,
         Average_list_button,
-        result_text
+        result_text,
+        formula_median,
+        soreted_number,
+        selection,
+        parity,
+        result_end
     )
     page.update()

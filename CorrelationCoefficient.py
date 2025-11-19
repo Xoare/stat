@@ -44,4 +44,3 @@ def StructWindow(page: ft.Page):
         CorrelationCoefficient_Button,
         result_text
     )
-    page.update()
