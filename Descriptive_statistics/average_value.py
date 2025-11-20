@@ -1,11 +1,5 @@
 import flet as ft
-
-def is_float_or_is_int(value):
-    try: 
-        float(value)
-        return True
-    except (ValueError, TypeError):
-        return False
+from CheckingTheDataType.TypeFloat import is_float_or_is_int
 
 def AverageValue(e: ft.ControlEvent):
     page = e.page

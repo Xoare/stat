@@ -1,6 +1,7 @@
 import flet as ft
 from Descriptive_statistics.average_value import AverageValue
 from Descriptive_statistics.median import MedianValue
+from Descriptive_statistics.sampling_mode import SamplingMode
 
 """Создание Navigation Drawer"""
 
@@ -20,7 +21,7 @@ class NavDraw:
         self.ItemDescriptiveStatistics = [
             {"name": "Среднее", "on_click" : AverageValue},
             {"name": "Медиана", "on_click" : MedianValue},
-            {"name": "Мода", "on_click" : AverageValue},
+            {"name": "Мода", "on_click" : SamplingMode},
             {"name": "Дисперсия", "on_click" : AverageValue},
             {"name": "Стандартное отклонение", "on_click" : AverageValue},
             {"name": "Минимум", "on_click" : AverageValue},

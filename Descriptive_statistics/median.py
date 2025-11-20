@@ -1,17 +1,11 @@
 import flet as ft
-
-def is_float_or_is_int(value):
-    try: 
-        float(value)
-        return True
-    except (ValueError, TypeError):
-        return False
+from CheckingTheDataType.TypeFloat import is_float_or_is_int
 
 def MedianValue(e: ft.ControlEvent):
     page = e.page
     page.clean()
     
-    Average_list = ft.TextField(label='2,2,3,4,5')
+    Average_list = ft.TextField(label='1,2,3,4,5')
     result_text = ft.Text(size=16)
     formula_median = ft.Text("Формулы:\nMe = x₍ₙ₊₁₎/₂\nMe = (xₙ/₂ + xₙ/₂ ₊ ₁) / 2", weight=ft.FontWeight.BOLD, size=20, visible=False)
     soreted_number = ft.Text(visible=False, size=16)
