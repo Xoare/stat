@@ -56,7 +56,7 @@ class NavDraw:
         ]
     
     """Визуализация"""
-    def items_visualization(self, section_name = None):
+    def items_visualization(self, e: ft.ControlEvent, section_name = None):
         items = [ft.CupertinoFilledButton(
             content=ft.Row([
                 ft.Text("Визуализация"),
@@ -71,6 +71,9 @@ class NavDraw:
                 continue
             else:
                 items.append(ft.Divider(thickness=1))
+
+
+        self.page.update()
         items.append(ft.CupertinoFilledButton(text = "Назад", on_click = lambda e: self.show_main_menu()))
         return items
     
