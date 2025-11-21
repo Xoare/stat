@@ -2,6 +2,9 @@ import flet as ft
 from Descriptive_statistics.average_value import AverageValue
 from Descriptive_statistics.median import MedianValue
 from Descriptive_statistics.sampling_mode import SamplingMode
+from Descriptive_statistics.minimum_value import MinimumValue
+from Descriptive_statistics.maximum_value import MaximumValue
+from Descriptive_statistics.variance_value import VarianceValue
 
 """Создание Navigation Drawer"""
 
@@ -22,10 +25,10 @@ class NavDraw:
             {"name": "Среднее", "on_click" : AverageValue},
             {"name": "Медиана", "on_click" : MedianValue},
             {"name": "Мода", "on_click" : SamplingMode},
-            {"name": "Дисперсия", "on_click" : AverageValue},
+            {"name": "Дисперсия", "on_click" : VarianceValue},
             {"name": "Стандартное отклонение", "on_click" : AverageValue},
-            {"name": "Минимум", "on_click" : AverageValue},
-            {"name": "Максимум", "on_click" : AverageValue},
+            {"name": "Минимум", "on_click" : MinimumValue},
+            {"name": "Максимум", "on_click" : MaximumValue},
             {"name": "Квартили", "on_click" : AverageValue}
         ]
         
