@@ -1,6 +1,7 @@
 import flet as ft
 from NavigationDarwer import NavDraw
 from AppbarTitle.title import title_appbar
+from First_page import start_page
 
 class App:
     def __init__(self, page: ft.Page):
@@ -8,6 +9,7 @@ class App:
         self.page = page
         page.title = "Калькулятор Статистики"
         self.button_list = []
+        start_page.first_page(page)
         page.scroll = ft.ScrollMode.AUTO
         self.Appbar()
 
